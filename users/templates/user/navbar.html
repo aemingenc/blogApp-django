@@ -1,0 +1,58 @@
+<div class="navbar">
+  <ul class="nav justify-content-start">
+   
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'home'%}" >Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link ">About</a>
+    </li>
+  </ul>
+  <ul class="nav justify-content-center">
+   
+    <li class="nav-item">
+      <a class="nav-link" href="#">A E G</a>
+    </li>
+    
+  </ul>
+  <ul class="nav justify-content-end">
+    {% if request.user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'logout'%}">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'profile' user.id %}">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'post_create'%}">New Post</a>
+    </li>
+    
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'user_login'%}">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="{% url 'register' %}">Register</a>
+    </li>
+  </ul>
+  {% endif %}
+</div>
+
+ 
+
+
+
+
+
+
+
+
+  <!-- <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li> -->

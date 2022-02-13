@@ -1,0 +1,12 @@
+{%extends 'user/base.html'%} 
+
+{% block content %}
+{% load crispy_forms_tags %}
+Are you sure for delete {{post}}?
+<form action="" method= "POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">OK</button>
+    <button class="btn btn-primary"><a href = "{% url 'home'%}" >Cancel</a></button>
+</form>
+
+{% endblock content %}

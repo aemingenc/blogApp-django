@@ -1,0 +1,13 @@
+{%extends 'user/base.html'%} 
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container-u">
+  <form action="" method= "POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button type="submit" value="UPDATE" class="btn btn-primary">Update</button>
+  </form>
+  <button class="btn btn-danger"><a href = "{% url 'post_delete' post.id %}" >Delete</a></button>
+</div>
+  {% endblock content %}

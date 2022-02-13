@@ -1,0 +1,55 @@
+{% extends 'user/base.html' %} {% block content %}
+
+
+    
+    
+        <div class="container-d">
+            <div class="df" ">
+                <img src="../../../media/{{post.image}}" class="image" alt="...">
+                <div class="content" >
+                <h1 class="card-title">{{post.title}}</h1>
+                <hr>
+                <p class="card-text">{{post.content}}</p>
+                <hr>
+                <div class="">
+                    <h4>Enjoy this post?Give it a LIKE!!!</h4>
+                </div>
+                <hr>
+                <div>
+                    
+                    <h3>COMMENTS...</h3>
+                    {% if  not post.comments.all %}
+                        <p>Not yet Comments</p>
+                    <button class="btn btn-success"><a href="{%url 'add_comment' post.id%}">Add Comment</a></button>   
+                    {% else %}
+                        
+                        {% for comment in post.comments.all  %}
+                            {{comment.body}}
+                            <br>
+                            <strong>{{comment.date_added}}}</strong>
+                            <br>
+                            
+                            
+                        {% endfor %}
+                        <button class="btn btn-success"><a href="{%url 'add_comment' post.id%}">Add Comment</a></button>
+                    {% endif %}
+                        
+                    <br>
+                </div>
+                                    {% if user.is_authenticated %}
+                            {% if user.id == post.author.id %}
+
+                    <div class="buttons">
+                       <button class="btn btn-primary"><a href="{% url 'post_update' post.id %}">UpDate</a></button> 
+                       <button  class="btn btn-danger"><a href="{% url 'post_delete' post.id %}">Delete</a></button>
+                    </div>
+                            {% endif %}
+                        {% endif %}
+            </div>
+              </div>
+  </div>            
+        
+                  
+{% endblock content %}
+        
+            
