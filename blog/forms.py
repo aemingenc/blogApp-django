@@ -11,10 +11,10 @@ class PostForm(forms.ModelForm):
         exclude = ["author"]
 
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('body',)
+# class CommentForm(forms.ModelForm):
+#     class Meta:
+#         model = Comment
+#         fields = ('body',)
         
         
 

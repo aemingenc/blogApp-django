@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import  PostForm,CommentForm
+from .forms import  PostForm
 from django.contrib import messages
 from .models import Post,Comment
 from django.views.generic import CreateView
@@ -75,31 +75,14 @@ def post_detail(request,id):
 
 
 
-def AddCommentView(request,id):
-    blog=Post.objects.get(id=id)
-    form = CommentForm()
-    #obj = get_object_or_404(Blog)
-    if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid:
-            comment = form.save(commit=False)
-            comment.user = request.user
-            comment.post = blog
-            comment.save()
-            return redirect("home")
-           # return redirect(request.path)
-    context = {
-        "blog": blog,
-        "form": form
-    }
-    return render(request,"blog/add_comment.html",context)
 
 
-# class AddCommentVİew(CreateView):
-#     model =Comment
-#     template_name ="blog/add_comment.html"
-#     fields ="__all__"
-#     #form_class = CommentForm
-#     success_url = reverse_lazy('home')
+
+class AddCommentVİew(CreateView):
+    model =Comment
+    template_name ="blog/add_comment.html"
+    fields ="__all__"
+    #form_class = CommentForm
+    success_url = reverse_lazy('home')
 
 
