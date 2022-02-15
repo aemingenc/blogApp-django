@@ -69,8 +69,8 @@ def post_delete(request, id):
 
 def post_detail(request,id):
     post=Post.objects.get(id=id)
-    comment=Comment.objects.get(id=id)
-    context={"post":post, "comment":comment }
+    
+    context={"post":post}
     return render(request,"blog/post_detail.html" ,context)
 
 
